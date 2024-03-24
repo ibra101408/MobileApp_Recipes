@@ -7,6 +7,14 @@ function Protected() {
     const navigation = useNavigation(); // Get the navigation object
     const {user, signOut} = useAuthenticator((context) => [context.user]);
 
+    async function handleAPI() {
+        try {
+            navigation.navigate('API');
+        } catch (error) {
+            console.log('error signing out: ', error);
+        }
+    }
+
     async function handleSignOut() {
         try {
             signOut();
@@ -23,6 +31,7 @@ function Protected() {
                     <Text>This is protected screen</Text>
                     <Text>Logged in as: {user.username}</Text>
                     <Button title="Sign Out" onPress={handleSignOut}/>
+                    <Button title="API" onPress={handleAPI}/>
                 </>
             ) : (
                 <Text>Please log in to view this content.</Text>
