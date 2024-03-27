@@ -1,7 +1,8 @@
 import React from 'react';
-import {SafeAreaView, Text, Button} from "react-native";
+import {SafeAreaView, Text, Button, Image, View, TouchableOpacity} from "react-native";
 import {useNavigation} from "@react-navigation/native";
 import {useAuthenticator, withAuthenticator} from '@aws-amplify/ui-react-native';
+import {styles} from "../welcome/styles.js";
 
 function Protected() {
     const navigation = useNavigation(); // Get the navigation object
@@ -25,13 +26,20 @@ function Protected() {
     }
 
     return (
-        <SafeAreaView>
+        <SafeAreaView style={styles.container}>
+            <View>
+                <Image style={styles.logo} source={require('../../assets/logo3.jpeg')} />
+            </View>
             {user ? (
                 <>
-                    <Text>This is protected screen</Text>
-                    <Text>Logged in as: {user.username}</Text>
-                    <Button title="Sign Out" onPress={handleSignOut}/>
-                    <Button title="API" onPress={handleAPI}/>
+                    <Text style={styles.title}>Main Menu</Text>
+                    <Text style={styles.welcomeUser}>Hello, {user.username}</Text>
+                    <TouchableOpacity onPress={handleAPI} style={styles.button}>
+                        <Text style={styles.buttonText}>Go to recipe API</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={handleSignOut} style={[styles.button, styles.buttonSignOut]}>
+                        <Text style={styles.buttonText}>Sign Out</Text>
+                    </TouchableOpacity>
                 </>
             ) : (
                 <Text>Please log in to view this content.</Text>

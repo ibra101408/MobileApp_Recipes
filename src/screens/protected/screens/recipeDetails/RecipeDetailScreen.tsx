@@ -5,8 +5,6 @@ import {
     Text,
     Image,
     Modal,
-    Button,
-    SafeAreaView,
     TouchableOpacity,
     Linking,
     ScrollView,
@@ -18,7 +16,12 @@ import Close from '../../../../assets/close.svg';
 interface RecipeDetailProps {
     isVisible: boolean;
     onClose: () => void;
-    recipe: { label: string; image: string; ingredientLines: string[] } | null;
+    label: string;
+    recipe: {
+        label: string;
+        image: string;
+        ingredientLines: string[]
+    } | null;
 }
 
 const RecipeDetailScreen: React.FC<RecipeDetailProps> = ({isVisible, onClose, recipe}) => {
@@ -32,9 +35,10 @@ const RecipeDetailScreen: React.FC<RecipeDetailProps> = ({isVisible, onClose, re
             onRequestClose={onClose}
             animationType="slide"
             statusBarTranslucent={true}
+
         >
-            <ScrollView contentContainerStyle={{flexGrow: 1}}>
-                <View>
+            <ScrollView style={{flex: 1}}>
+                <View style={styles.container}>
                     {recipe && (
                         <>
 
@@ -48,22 +52,25 @@ const RecipeDetailScreen: React.FC<RecipeDetailProps> = ({isVisible, onClose, re
                                 </TouchableOpacity>
                             </View>
                             <View style={styles.detailTextContainer}>
-                                <Text style={styles.label}>{recipe.recipe.label}</Text>
-                                {recipe.recipe.dietLabels.map((label, index) => (
-                                    <Tag key={index} label={label}/>
-                                ))}
-                                <Tag label={`${recipe.recipe.cuisineType}`}/>
-                                <Tag label={`${recipe.recipe.mealType}`}/>
-                                <Tag label={`${recipe.recipe.dishType}`}/>
-                                <Text style={styles.ingredientsTitle}>Ingredients:</Text>
-                                {recipe.recipe.ingredientLines.map((ingredientLine: string, index: number) => (
-                                    <Text key={index} style={styles.ingredientLine}>{ingredientLine}</Text>
-                                ))}
+                                <View style={styles.tagsContainer}>
+                                    <Text style={styles.label}>{recipe.recipe.label}</Text>
+                                    {recipe.recipe.dietLabels.map((label, index) => (
+                                        <Tag key={index} label={label}/>
+                                    ))}
+                                    <Tag label={`${recipe.recipe.cuisineType}`}/>
+                                    <Tag label={`${recipe.recipe.mealType}`}/>
+                                    <Tag label={`${recipe.recipe.dishType}`}/>
 
+                                </View>
+                                <Text style={styles.label}>Ingredients</Text>
+                                {recipe.recipe.ingredientLines.map((ingredientLine: string, index: number) => (
+                                    <View key={index} style={styles.ingredientContainer}>
+                                        <Text style={styles.ingredientLine}>{ingredientLine}</Text>
+                                    </View>
+                                ))}
                                 <TouchableOpacity onPress={handleLinkPress} style={styles.button}>
                                     <Text style={styles.buttonSource}>Recipe</Text>
                                 </TouchableOpacity>
-
                             </View>
                         </>
                     )}
@@ -74,39 +81,17 @@ const RecipeDetailScreen: React.FC<RecipeDetailProps> = ({isVisible, onClose, re
 
     );
 };
-const Tag = ({label}) => {  let labels = [];
-    let lab2 = [];
 
-    if (typeof label === 'string') {
-        labels = label.split(', '); // Split the label by commas
-        lab2.push(...labels); // Push each label into lab2 array
 
-    }else {
-        console.error('Invalid label type. Expected string or array.');
-    }
 
-    //lab2.push(...labels); // Merge labels into lab2 array
-
-    console.log("lab2:", lab2);
-   // console.log("FIrst", firstTwoLabels)
-    //console.log("rest", restLabels)
+const Tag = React.memo(({label}: RecipeDetailProps) => {
     return (
         <View style={styles.tagContainer}>
-            <View style={styles.col}>
-                <Text style={styles.tagText}>{label}</Text>
-                <View style={styles.triangle}></View>
-                <View style={styles.circle}></View>
-            </View>
-            {/* <View style={styles.col2}>
-                <Text style={styles.tagText}>{label}</Text>
-                <View style={styles.triangle}></View>
-                <View style={styles.circle}></View>
-            </View>
-*/}
-
+            <Text style={styles.tagText}>{label}</Text>
+            <View style={styles.triangle}></View>
+            <View style={styles.circle}></View>
         </View>
     );
-}
-
+});
 
 export default RecipeDetailScreen;

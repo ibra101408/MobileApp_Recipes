@@ -4,103 +4,86 @@ import {StyleSheet} from "react-native";
 
 export const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        backgroundColor: '#FFF',
+        paddingBottom: 20,
     },
+
     label: {
         fontSize: 35,
         fontWeight: 'bold',
         marginTop: 20,
+    },
 
-    },
-    ingredientsTitle: {
-        fontSize: 18,
-        fontWeight: 'bold',
-        marginTop: 20,
-    },
     ingredientLine: {
-        fontSize: 16,
+        fontSize: 18,
         marginTop: 5,
     },
+
     text: {
         fontSize: 16,
         color: '#555',
     },
+
     button: {
-        backgroundColor: '#E2443B',
+        backgroundColor: colors.darkGreen,
         paddingHorizontal: 20,
         paddingVertical: 10,
         borderRadius: 30,
         marginTop: 20,
         alignItems: 'center',
     },
+
     buttonSource: {
         color: '#FFF',
         fontSize: 18,
         fontWeight: 'bold',
     },
-    detailTextContainer:{
+
+    detailTextContainer: {
         paddingHorizontal: 20,
-        top: 240,
-        width: '100%',
-        position: 'absolute',
         borderRadius: 40,
+        marginTop: -90,
         backgroundColor: colors.white,
     },
+
     closeBtnContainer: {
         bottom: 250,
         left: 10,
-
     },
+
     closeBtn: {
-        width: 50, // Adjust size as needed
-        height: 50, // Adjust size as needed
-        borderRadius: 30, // Half of width/height to make it a circle
-        backgroundColor: 'rgba(255,255,255,0.56)', // Example background color
+        width: 50,
+        height: 50,
+        borderRadius: 30,
+        backgroundColor: 'rgba(255,255,255,0.56)',
         justifyContent: 'center',
         alignItems: 'center',
     },
 
     tagContainer: {
-        backgroundColor: 'red',
-        borderRadius: 4,
-        borderLeftWidth: 1,
-        borderLeftColor: '#6ab070',
-        marginLeft: 19,
+        marginLeft: 29,
+        marginTop: 10,
+    },
+
+    ingredientContainer: {
+        flexDirection: 'row', // Ensure each ingredient is on a new line
+        alignItems: 'center', // Align items vertically
+    },
+
+    tagsContainer: {
         display: 'flex',
         flexDirection: 'row',
-        justifyContent: 'space-between', // Align columns with space between
-
-        alignItems: 'center',
-        paddingHorizontal: 0,
-        height: 38,
-        position: 'relative',
-        marginTop: 10,
-        gridGap: 45, // Adjust the gap between grid items
-
+        flexWrap: 'wrap',
+        textAlign: 'left',
     },
-    col: {
-        display: 'grid',
-        gridTemplateColumns: 'auto auto', // Two columns with equal width
-        gridGap: 45, // Adjust the gap between grid items
-        alignItems: 'left',
 
-    },
-    col2: {
-        display: 'grid',
-        gridTemplateColumns: 'auto auto', // Two columns with equal width
-        gridGap: 45, // Adjust the gap between grid items
-        alignItems: 'right',
-
-    },
     tagText: {
-        color: 'white',
-        fontWeight: '300',
+        color: colors.black,
+        fontWeight: '400',
         fontSize: 22,
-        backgroundColor: '#6ab070',
+        backgroundColor: colors.lightGreen,
         lineHeight: 38,
         paddingHorizontal: 10,
-        width: 'auto',
+        marginRight: 'auto', // Align the text to the right
     },
 
     triangle: {
@@ -114,9 +97,10 @@ export const styles = StyleSheet.create({
         borderRightWidth: 19,
         borderTopColor: 'transparent',
         borderBottomColor: 'transparent',
-        borderRightColor: '#6ab070',
+        borderRightColor:  colors.lightGreen,
         flex: 10, // Added this line to allow the triangle to grow and shrink
     },
+
     circle: {
         position: 'absolute',
         backgroundColor: 'white',

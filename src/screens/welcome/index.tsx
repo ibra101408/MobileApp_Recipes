@@ -1,6 +1,7 @@
 import {Link, useNavigation} from "@react-navigation/native";
-import {Button, Image, SafeAreaView, Text, View} from "react-native"
+import {Button, Image, SafeAreaView, Text, TouchableOpacity, View} from "react-native"
 import {styles} from "./styles.js";
+import React from "react";
 
 export default function Test() {
     const navigation = useNavigation();
@@ -11,12 +12,13 @@ export default function Test() {
 
     return (
         <SafeAreaView style={styles.container}>
-            <Text>Welcome page</Text>
-            <View style={styles.imageContainer}>
+            <View>
                 <Image style={styles.logo} source={require('../../assets/logo3.jpeg')} />
             </View>
-            <Button title="Protected" onPress={onProtectedPressed}/>
-
+            <Text style={styles.title}>Welcome To Recipe Book</Text>
+            <TouchableOpacity onPress={onProtectedPressed} style={styles.button}>
+                <Text style={styles.buttonText}>Go To Menu</Text>
+            </TouchableOpacity>
         </SafeAreaView>
     );
 }

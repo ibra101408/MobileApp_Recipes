@@ -13,8 +13,6 @@ export const getRecipes = async (mealType: string | null, dishType: string | nul
                 app_key: APP_KEY,
                 mealType,
                 dishType,
-                limit: 30,
-               // health: ['alcohol-free', 'alcohol-cocktail'],
                 diet,
                 cuisineType,
             },
