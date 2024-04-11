@@ -4,8 +4,8 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {NavigationContainer} from '@react-navigation/native';
 
 import _protected from "../screens/protected";
-import API from "../screens/protected/screens/API.tsx";
-import Favorite from "../screens/protected/screens/Favorite.tsx";
+import API from "../screens/protected/API_screen/API.tsx";
+import Favorite from "../screens/protected/API_screen/Favorite.tsx";
 import {Image} from "react-native";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
@@ -48,10 +48,6 @@ export default function Navigation() {
                     }}
                 />
             </Stack.Navigator>
-            {/* <Tab.Navigator>
-
-            </Tab.Navigator>*/}
-
         </NavigationContainer>
 
     )

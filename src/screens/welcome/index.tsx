@@ -1,5 +1,5 @@
-import {Link, useNavigation} from "@react-navigation/native";
-import {Button, Image, SafeAreaView, Text, TouchableOpacity, View} from "react-native"
+import {useNavigation} from "@react-navigation/native";
+import {Image, SafeAreaView, Text, TouchableOpacity, View} from "react-native"
 import {styles} from "./styles.js";
 import React from "react";
 
@@ -7,7 +7,9 @@ export default function Test() {
     const navigation = useNavigation();
 
     const onProtectedPressed = () => {
-        navigation.navigate('Protected')
+      //  navigation.navigate('Protected')
+        navigation.navigate('API');
+
     }
 
     return (
@@ -17,7 +19,7 @@ export default function Test() {
             </View>
             <Text style={styles.title}>Welcome To Recipe Book</Text>
             <TouchableOpacity onPress={onProtectedPressed} style={styles.button}>
-                <Text style={styles.buttonText}>Go To Menu</Text>
+                <Text style={styles.buttonText}>Go To Api</Text>
             </TouchableOpacity>
         </SafeAreaView>
     );

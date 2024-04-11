@@ -62,7 +62,7 @@ const RecipeComponent: React.FC = () => {
     const navigation = useNavigation();
 
     const handleBack = () => {
-        navigation.navigate('Protected');
+        navigation.navigate('welcome');
     };
 
     const handleShowResults = () => {
